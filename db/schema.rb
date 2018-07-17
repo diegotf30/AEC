@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180708020534) do
+ActiveRecord::Schema.define(version: 20180717033226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20180708020534) do
     t.boolean "active", default: true
     t.string "type", default: "local"
     t.string "place"
-    t.string "phone"
+    t.string "phone", null: false
     t.text "comments"
     t.bigint "leader_id"
     t.bigint "dependent_id"
@@ -45,18 +45,23 @@ ActiveRecord::Schema.define(version: 20180708020534) do
     t.index ["leader_id"], name: "index_groups_on_leader_id"
   end
 
+  create_table "members", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "phone", null: false
+    t.string "gender"
+    t.string "classification"
+    t.string "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean "admin", default: false
+  end
+
   create_table "sectors", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_foreign_key "groups", "users", column: "dependent_id"
-  add_foreign_key "groups", "users", column: "leader_id"
+  add_foreign_key "groups", "members", column: "dependent_id"
+  add_foreign_key "groups", "members", column: "leader_id"
 end
