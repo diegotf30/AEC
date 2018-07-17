@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     root 'country#index', as: :authenticated_root
   end
 
+  resources :users, only: [:show, :new]
+
   root 'root#show'
 end

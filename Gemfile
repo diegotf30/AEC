@@ -22,10 +22,10 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 # Bootstrap dependency && for JS
 gem 'jquery-rails'
-
-gem 'listen'
 # For admin dashboard
 gem 'administrate'
+# For forms
+gem 'simple_form'
 
 group :development do
   gem 'byebug'
@@ -33,6 +33,7 @@ group :development do
   gem 'foreman', '~> 0.63.0'
   gem 'pry-rails', '~> 0.3.2'
   gem 'spring', '~> 1.2.0'
+  gem 'listen'
 end
 
 group :development, :test do
