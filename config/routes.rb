@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  namespace :admin do
-    # resources :announcements
+  devise_for :members
 
-    root to: "users#index"
+  namespace :admin do
+    resources :members
+    resources :groups
+    resources :sectors
+    resources :cities
+    resources :countries
+
+    root 'members#index'
   end
+
+  authenticated :member do
+    root 'country#index', as: :authenticated_root
+  end
+
+  root 'root#show'
 end
