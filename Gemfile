@@ -17,13 +17,14 @@ gem 'coffee-rails', '~> 4.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Custom CSS
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap', '~> 4.1.1'
 # Flexible Authentication
 gem 'devise'
-# Jquery
+# Bootstrap dependency && for JS
 gem 'jquery-rails'
 
 gem 'listen'
+# For admin dashboard
 gem 'administrate'
 
 group :development do
