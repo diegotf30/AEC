@@ -6,10 +6,12 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
-    before_action :authenticate_admin
+    before_action :authenticate_user!, :admin
 
-    def authenticate_admin
-      # TODO Add authentication logic here.
+    def admin
+      unless current_user&.admin?
+        raise ActionController::RoutingError.new("This page was not found")
+      end
     end
 
     # Override this value to specify the number of elements to display at a time

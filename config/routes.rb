@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :members
+  devise_for :members, controllers: {
+    sessions: "auth/sessions",
+    registrations: "auth/registrations"
+  }
+
+  devise_scope :member do
+    root to: 'auth/sessions#new'
+  end
 
   namespace :admin do
     resources :members
@@ -12,10 +19,13 @@ Rails.application.routes.draw do
   end
 
   authenticated :member do
-    root 'country#index', as: :authenticated_root
+    root 'countries#index', as: :authenticated_root
   end
 
-  resources :users, only: [:show, :new]
+  namespace :onboarding do
+    resource :verification, only: [:show]
+  end
 
-  root 'root#show'
+  resources :members, only: [:show, :new]
+  resources :countries, only: [:index, :show]
 end

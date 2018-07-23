@@ -1,5 +1,5 @@
-class RootController < ApplicationController
-  def show
+class MemberController < ApplicationController
+  def new
     respond_to do |format|
       format.html
       format.js
