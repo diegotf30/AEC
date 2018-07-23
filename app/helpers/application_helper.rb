@@ -6,4 +6,8 @@ module ApplicationHelper
   def resource
     @resource ||= Member.new
   end
+
+  def random_button_color
+    ['primary', 'success', 'warning', 'info', 'dark', 'secondary', 'teal', 'purple'].sample
+  end
 end

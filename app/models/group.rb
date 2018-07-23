@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
   belongs_to :sector
   has_many :members
+  has_one :member, foreign_key: 'leader_id'
+  has_one :member, foreign_key: 'dependent_id'
 
   DAYS = %w[ lun mar mie jue vie sab dom ].freeze
 

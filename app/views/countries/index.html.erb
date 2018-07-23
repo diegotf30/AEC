@@ -1,0 +1,9 @@
+<% @countries.each_slice(4) do |row| %>
+  <div class="row pd-3">
+    <% row.each do |country| %>
+      <div class="col-md-3">
+        <%= button_to country.name, country_path(country), class: "btn btn-#{random_button_color} btn-lg btn-block btn-huge" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
