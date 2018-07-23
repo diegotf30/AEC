@@ -26,14 +26,22 @@ gem 'jquery-rails'
 gem 'administrate'
 # For forms
 gem 'simple_form'
+# Internationalization
+gem 'i18n'
+# SVGs
+gem 'inline_svg'
+
+gem 'active_type'
 
 group :development do
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
   gem 'byebug'
   gem 'certified', '~> 0.1.2'
   gem 'foreman', '~> 0.63.0'
   gem 'pry-rails', '~> 0.3.2'
-  gem 'spring', '~> 1.2.0'
   gem 'listen'
+  gem 'spring'
 end
 
 group :development, :test do
