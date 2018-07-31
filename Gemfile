@@ -16,8 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-# Custom CSS
-gem 'bootstrap', '~> 4.1.1'
 # Flexible Authentication
 gem 'devise'
 # Bootstrap dependency && for JS
@@ -30,8 +28,12 @@ gem 'simple_form'
 gem 'i18n'
 # SVGs
 gem 'inline_svg'
-
+# For Member::Create
 gem 'active_type'
+# For Microsoft Access DB
+gem 'mdb'
+# CSS Dependencies
+gem 'bootstrap', '~> 4.1.1'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
