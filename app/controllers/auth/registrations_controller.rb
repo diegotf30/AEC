@@ -6,10 +6,10 @@ class Auth::RegistrationsController < Devise::RegistrationsController
       if resource.save
         sign_up(resource_name, resource)
         flash[:notice] = t('devise.sessions.member.signed_in')
-        format.html
+        format.html { redirect_to onboarding_verification_path }
         format.js
       else
-        flash[:error] = resource.errors.full_messages.first
+        flash.now[:error] = resource.errors.full_messages.first
         clean_up_passwords(resource)
         set_minimum_password_length
         format.html { respond_with(resource) }
