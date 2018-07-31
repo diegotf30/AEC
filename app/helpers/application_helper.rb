@@ -7,6 +7,10 @@ module ApplicationHelper
     @resource ||= Member.new
   end
 
+  def current_member_verified?
+    current_member&.verified?
+  end
+
   def random_button_color
     ['primary', 'success', 'warning', 'info', 'dark', 'secondary', 'teal', 'purple'].sample
   end
@@ -16,6 +20,7 @@ module ApplicationHelper
   end
 
   def format_phone(phone)
+    return '-' unless phone
     number_to_phone(phone, pattern: /(\d{2})(\d{4})(\d{4})$/, area_code: true)
   end
 
@@ -50,12 +55,13 @@ module ApplicationHelper
   end
 
   def status_to_color_class(status)
-    if 'active'
+    case status
+    when 'active'
       'text-success'
-    elsif 'disabled'
-      'text-warning'
-    elsif 'inactive'
-      'text-danger'
+    when 'disabled'
+      'text-warning bold'
+    when 'inactive'
+      'text-danger bold'
     end
   end
 end

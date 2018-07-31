@@ -100,3 +100,9 @@
   padding-right: 1.27rem !important;
 
 }
+
+.col-header {
+  @extend .col;
+  padding-right: 16px;
+  padding-left: 14px;
+}

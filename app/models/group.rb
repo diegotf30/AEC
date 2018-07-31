@@ -22,4 +22,20 @@ class Group < ApplicationRecord
   def add_member(member)
     members << member
   end
+
+  def inactive?
+    !active?
+  end
+
+  def disable
+    unless inactive?
+      update_attributes! active: false
+    end
+  end
+
+  def enable
+    unless active?
+      update_attributes! active: true
+    end
+  end
 end

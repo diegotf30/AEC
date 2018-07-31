@@ -3,11 +3,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li id="countries" class="nav-item <%= 'active' if current_page?(countries_path) %>">
-        <%= link_to "Paises", countries_path, class: "nav-link #{'disabled' unless current_member}"  %>
+      <li id="countries" class="nav-item active <%= 'bold' if current_page?(countries_path) %>">
+        <% if current_member_verified? %>
+          <%= link_to "Paises", countries_path, class: "nav-link"  %>
+        <% else %>
+          <div class="nav-link disabled">Paises</div>
+        <% end %>
       </li>
-      <li id="reports" class="nav-item <%= 'active' if current_page?(reports_path) %>">
-        <%= link_to "Reportes", reports_path, class: "nav-link #{'disabled' unless current_member}"  %>
+      <li id="reports" class="nav-item active <%= 'bold' if current_page?(reports_path) %>">
+        <% if current_member_verified? %>
+          <%= link_to "Reportes", reports_path, class: "nav-link"  %>
+        <% else %>
+          <div class="nav-link">Reportes</div>
+        <% end %>
       </li>
     </ul>
     <% if current_member %>
