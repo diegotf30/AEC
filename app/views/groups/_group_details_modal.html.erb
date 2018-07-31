@@ -1,0 +1,82 @@
+<div class="modal fade" id="group-details-modal" tabindex="-1" role="dialog" aria-labelledby="group-details-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title bold">Detalles del Grupo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-9 d-inline">
+            <b>Horario:</b>
+            <%= day_abbreviation_to_text(group.day) %>
+            a las
+            <%= group.hour %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9 d-inline">
+            <b>Número de Clases:</b>
+            <%= group.classes %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9 d-inline">
+            <b>Tipo de Grupo:</b>
+            <%= group.context.capitalize %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9 d-inline">
+            <b>Teléfono:</b>
+            <%= format_phone(group.phone) %>
+          </div>
+        </div>
+
+        <% if group.place? %>
+          <div class="row">
+            <div class="col-md-9 d-inline">
+              <b>Lugar de Reunión:</b>
+              <%= group.place %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if group.leader.present? %>
+          <div class="row">
+            <div class="col-md-9 d-inline">
+              <b>Dirigente:</b>
+              <%= group.leader.name %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if group.dependent.present? %>
+          <div class="row">
+            <div class="col-md-9 d-inline">
+              <b>Dependiente:</b>
+              <%= group.dependent.name %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if group.comments? %>
+          <div class="row">
+            <div class="col-md-9 d-inline">
+              <b>Comentarios:</b>
+              <%= group.comments %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Cerrar", "#", class: "btn btn-secondary", data: { dismiss: "modal" } %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -27,5 +27,12 @@ Rails.application.routes.draw do
   end
 
   resources :members, only: [:show, :new]
+
   resources :countries, only: [:index, :show]
+  resources :cities, only: [:new, :show]
+  resources :sectors, only: [:new, :show]
+  resources :groups, only: [:new, :show]
+
+  resources :reports, only: [:index, :new]
+  resources :attendances, only: [:create, :update]
 end

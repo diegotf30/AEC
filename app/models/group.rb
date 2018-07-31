@@ -10,4 +10,16 @@ class Group < ApplicationRecord
   validates :phone, uniqueness: true, allow_nil: true, allow_blank: true
   validates :day, inclusion: { in: DAYS }
   validates :hour, length: { maximum: 5 }
+
+  def leader
+    Member.find_by(id: leader_id)
+  end
+
+  def dependent
+    Member.find_by(id: dependent_id)
+  end
+
+  def add_member(member)
+    members << member
+  end
 end

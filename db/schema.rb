@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180723025834) do
+ActiveRecord::Schema.define(version: 20180730203738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20180723025834) do
     t.string "name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.bigint "country_id"
+    t.index ["country_id"], name: "index_cities_on_country_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -41,8 +43,10 @@ ActiveRecord::Schema.define(version: 20180723025834) do
     t.bigint "dependent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.bigint "sector_id"
     t.index ["dependent_id"], name: "index_groups_on_dependent_id"
     t.index ["leader_id"], name: "index_groups_on_leader_id"
+    t.index ["sector_id"], name: "index_groups_on_sector_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -71,8 +75,11 @@ ActiveRecord::Schema.define(version: 20180723025834) do
     t.integer "sign_in_count", default: 0, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.bigint "group_id"
+    t.boolean "attendance", default: false
     t.index ["confirmation_token"], name: "index_members_on_confirmation_token", unique: true
     t.index ["email"], name: "index_members_on_email", unique: true
+    t.index ["group_id"], name: "index_members_on_group_id"
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_members_on_unlock_token", unique: true
   end
@@ -81,8 +88,14 @@ ActiveRecord::Schema.define(version: 20180723025834) do
     t.string "name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_sectors_on_city_id"
   end
 
+  add_foreign_key "cities", "countries"
   add_foreign_key "groups", "members", column: "dependent_id"
   add_foreign_key "groups", "members", column: "leader_id"
+  add_foreign_key "groups", "sectors"
+  add_foreign_key "members", "groups"
+  add_foreign_key "sectors", "cities"
 end

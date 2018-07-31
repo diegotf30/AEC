@@ -1,0 +1,17 @@
+<div class="row border">
+  <div class="border-right px-25 ml-2">
+    <%= f.input :attendance, as: :boolean, label: false, input_html: { checked: true } %>
+  </div>
+  <div class="col border-right">
+    <%= member.name.titleize %>
+  </div>
+  <div class="col border-right">
+    <%= member.classification %>
+  </div>
+  <div class="col border-right <%= status_to_color_class(member.status) %>">
+    <%= status_in_spanish(member.status) %>
+  </div>
+  <div class="col border-right">
+    <%= format_phone(member.phone) %>
+  </div>
+</div>

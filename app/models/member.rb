@@ -16,4 +16,12 @@ class Member < ApplicationRecord
   def verified?
     !!confirmed_at
   end
+
+  def active?
+    status == 'active'
+  end
+
+  def inactive?
+    status == 'inactive'
+  end
 end

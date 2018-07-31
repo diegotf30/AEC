@@ -1,0 +1,15 @@
+<% children.each_slice(4) do |row| %>
+  <div class="row pd-3">
+    <% row.each do |child| %>
+      <div class="col-md-3">
+        <%= button_to(
+              child.name,
+              show_path_helper(child),
+              method: :get,
+              class: "btn btn-#{random_button_color} btn-lg btn-block btn-huge"
+            )
+        %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

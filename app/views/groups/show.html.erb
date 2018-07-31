@@ -1,0 +1,28 @@
+<h1 class="text-center pd-tp-3 bold">
+  <%= @group.name %> -
+  <% if @group.active? %>
+    <div class="text-success d-inline">ACTIVO</div>
+  <% else %>
+  <div class="text-danger d-inline">INACTIVO</div>
+  <% end %>
+</h1>
+
+<div class="text-center">
+  <%= link_to "Detalles", "#",
+        class: "btn btn-primary bold",
+        data: { toggle: "modal", target: "#group-details-modal" } 
+  %>
+</div>
+
+<div class="card mg-5">
+  <h3 class="card-header text-white bg-primary bold">Asistencia</h3>
+  <div class="card-body">
+    <% if @group.members.any? %>
+      <%= render "attendance_form", members: @group.members %>
+    <% else %>
+      <%= render(partial: "empty_state") %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "group_details_modal", group: @group %>

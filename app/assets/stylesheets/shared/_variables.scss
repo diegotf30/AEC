@@ -8,6 +8,13 @@ $h4-font-size: ceil($base-font-size * 1.5);
 $h5-font-size: ceil($base-font-size * 1.25);
 $h6-font-size: ceil($base-font-size * 1.125);
 
+// Font Weight
+$header-font-weight: 400;
+
+// Line height
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
 // Other Sizes
 $base-border-radius: 3px;
 $modal-border-radius: 6px;
@@ -54,10 +61,7 @@ $text-color: rgba(0, 0, 0, 0.87);
 // Background Color
 $base-background-color: #fafbfc;
 $overlay-background-color: rgba(37, 40, 43, 0.6);
-
-// Border color
-$base-border-color: $dividers-color;
-$base-border: 1px solid $base-border-color;
+$banner-background-color: rgba(0, 0, 0, 0.8);
 
 // Font Colors
 $base-font-color: $dark-gray;
@@ -82,3 +86,14 @@ $flash-alert-color: $dark-yellow;
 $flash-error-color: $red;
 $flash-success-color: $green;
 $flash-notice-color: $blue;
+
+$color: $white;
+$color-name: $white;
+$color-states: (alert, $alert-color), (error, $error-color), (notice, $notice-color), (success, $success-color);
+
+// Bos shadow
+$base-shadow: 0 1px 2px 0 rgba(234, 236, 238, 0.8);
+
+// Border color
+$base-border-color: $dividers-color;
+$base-border: 1px solid $base-border-color;
