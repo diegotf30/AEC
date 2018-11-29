@@ -10,8 +10,6 @@ class CityDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     country: Field::BelongsTo,
     sectors: Field::HasMany,
-    groups: Field::HasMany,
-    members: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,
@@ -26,8 +24,8 @@ class CityDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :country,
     :sectors,
-    :groups,
-    :members,
+    :id,
+    :name,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,8 +33,6 @@ class CityDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :country,
     :sectors,
-    :groups,
-    :members,
     :id,
     :name,
     :created_at,
@@ -49,8 +45,6 @@ class CityDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :country,
     :sectors,
-    :groups,
-    :members,
     :name,
   ].freeze
 

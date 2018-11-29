@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.5.1'
 
 gem 'rails', '~> 5.1.4'
 
@@ -14,8 +14,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
 # Flexible Authentication
 gem 'devise'
 # Bootstrap dependency && for JS
@@ -43,7 +41,6 @@ group :development do
   gem 'foreman', '~> 0.63.0'
   gem 'pry-rails', '~> 0.3.2'
   gem 'listen'
-  gem 'spring'
 end
 
 group :development, :test do

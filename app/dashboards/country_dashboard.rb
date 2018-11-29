@@ -9,9 +9,6 @@ class CountryDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     cities: Field::HasMany,
-    sectors: Field::HasMany,
-    groups: Field::HasMany,
-    members: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,
@@ -25,18 +22,15 @@ class CountryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :cities,
-    :sectors,
-    :groups,
-    :members,
+    :id,
+    :name,
+    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :cities,
-    :sectors,
-    :groups,
-    :members,
     :id,
     :name,
     :created_at,
@@ -48,9 +42,6 @@ class CountryDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :cities,
-    :sectors,
-    :groups,
-    :members,
     :name,
   ].freeze
 

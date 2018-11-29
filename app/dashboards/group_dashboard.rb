@@ -10,13 +10,14 @@ class GroupDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     sector: Field::BelongsTo,
     members: Field::HasMany,
+    member: Field::HasOne,
     id: Field::Number,
     name: Field::String,
     day: Field::String,
     hour: Field::String,
     classes: Field::Number,
     active: Field::Boolean,
-    type: Field::String,
+    context: Field::String,
     place: Field::String,
     phone: Field::String,
     comments: Field::Text,
@@ -34,8 +35,8 @@ class GroupDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :sector,
     :members,
+    :member,
     :id,
-    :name,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -43,13 +44,14 @@ class GroupDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :sector,
     :members,
+    :member,
     :id,
     :name,
     :day,
     :hour,
     :classes,
     :active,
-    :type,
+    :context,
     :place,
     :phone,
     :comments,
@@ -65,12 +67,13 @@ class GroupDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :sector,
     :members,
+    :member,
     :name,
     :day,
     :hour,
     :classes,
     :active,
-    :type,
+    :context,
     :place,
     :phone,
     :comments,

@@ -9,8 +9,8 @@ module Admin
     before_action :authenticate_user!, :admin
 
     def admin
-      unless current_user&.admin?
-        raise ActionController::RoutingError.new("This page was not found")
+      unless current_member&.admin?
+        raise ActionController::RoutingError.new('This page was not found.')
       end
     end
 
