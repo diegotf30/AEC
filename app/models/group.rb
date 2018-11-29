@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
   belongs_to :sector
-  has_many :members
+  has_and_belongs_to_many :members
   has_one :member, foreign_key: 'leader_id'
   has_one :member, foreign_key: 'dependent_id'
 

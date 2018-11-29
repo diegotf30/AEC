@@ -1,8 +1,8 @@
 class Member < ApplicationRecord
-  has_many :groups
-
   devise :database_authenticatable, :validatable, :registerable, :recoverable,
          :rememberable, :trackable, :confirmable, :lockable
+  
+  has_and_belongs_to_many :groups
 
   validates :name, length: { maximum: 50 }, allow_blank: true
   validates :phone, uniqueness: true, allow_blank: true, allow_nil: true
