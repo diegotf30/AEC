@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730203738) do
+ActiveRecord::Schema.define(version: 20181129030921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_attendances_on_group_id"
+    t.index ["member_id"], name: "index_attendances_on_member_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +58,13 @@ ActiveRecord::Schema.define(version: 20180730203738) do
     t.index ["sector_id"], name: "index_groups_on_sector_id"
   end
 
+  create_table "groups_members", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "member_id", null: false
+    t.index ["group_id", "member_id"], name: "index_groups_members_on_group_id_and_member_id"
+    t.index ["member_id", "group_id"], name: "index_groups_members_on_member_id_and_group_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.string "phone"
@@ -75,13 +91,16 @@ ActiveRecord::Schema.define(version: 20180730203738) do
     t.integer "sign_in_count", default: 0, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.bigint "group_id"
     t.boolean "attendance", default: false
     t.index ["confirmation_token"], name: "index_members_on_confirmation_token", unique: true
     t.index ["email"], name: "index_members_on_email", unique: true
-    t.index ["group_id"], name: "index_members_on_group_id"
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_members_on_unlock_token", unique: true
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sectors", force: :cascade do |t|
@@ -92,10 +111,11 @@ ActiveRecord::Schema.define(version: 20180730203738) do
     t.index ["city_id"], name: "index_sectors_on_city_id"
   end
 
+  add_foreign_key "attendances", "groups"
+  add_foreign_key "attendances", "members"
   add_foreign_key "cities", "countries"
   add_foreign_key "groups", "members", column: "dependent_id"
   add_foreign_key "groups", "members", column: "leader_id"
   add_foreign_key "groups", "sectors"
-  add_foreign_key "members", "groups"
   add_foreign_key "sectors", "cities"
 end

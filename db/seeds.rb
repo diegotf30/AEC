@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+countries = ['Mexico', 'EUA', 'Colombia', 'Siberia', 'Japon', 'Bolivia', 'Bosnia', 'Iran', 'Italy', 'Peru', 'Pitcairn', 'Solomon Island', 'Uganda']
+countries.each do |c|
+  Country.create(name: c)
+end
