@@ -9,7 +9,7 @@ class Auth::RegistrationsController < Devise::RegistrationsController
         format.html { redirect_to onboarding_verification_path }
         format.js
       else
-        flash.now[:error] = resource.errors.full_messages.first
+        flash.now[:error] = resource.errors.full_messages
         clean_up_passwords(resource)
         set_minimum_password_length
         format.html { respond_with(resource) }
