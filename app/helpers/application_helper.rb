@@ -64,4 +64,11 @@ module ApplicationHelper
       'text-danger bold'
     end
   end
+
+  def single_line_flash(type, message)
+    concat(content_tag(:div, message, class: "alert alert-#{type}") do 
+            concat content_tag(:button, 'x', class: "close", data: { dismiss: 'alert' })
+            concat message 
+          end)
+  end
 end

@@ -3,7 +3,9 @@
   <head>
     <%= render "layouts/header_content" %>
     <%= render "application/navigation" %>
-    <%= render "flash" %>
+    <div class="app-flash mx-4 mt-4">
+      <%= render "flash" %> 
+    </div>
   </head>
   <%= content_tag :body, data: { action: action_name, controller: controller_name, path: request.path } do %>
     <%= yield %>
