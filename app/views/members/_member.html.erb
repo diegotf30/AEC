@@ -1,6 +1,10 @@
 <div class="row border">
   <div class="border-right px-25 ml-2">
-    <%= f.input :attendance, as: :boolean, label: false, input_html: { checked: true } %>
+    <% if @group.last_attendance_recent? %>
+      <%= f.input :attendance, as: :boolean, label: false, input_html: { checked: member.was_present_last_time? } %>
+    <% else %>
+      <%= f.input :attendance, as: :boolean, label: false, input_html: { checked: true } %>
+    <% end %>
   </div>
   <div class="col border-right">
     <%= member.name.titleize %>

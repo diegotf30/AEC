@@ -10,3 +10,21 @@ countries = ['Mexico', 'EUA', 'Colombia', 'Siberia', 'Japon', 'Bolivia', 'Bosnia
 countries.each do |c|
   Country.create(name: c)
 end
+
+cities = ['Monterrey', 'Saltillo', 'Distrito Federal', 'San Pedro']
+
+cities.each do |c|
+  City.create(name: c, country: Country.first)
+end
+
+sectors = ['Anahuac', 'San Jeronimo', 'Cumbres', 'Contry', 'Obispado', 'Mitras']
+
+sectors.each do |s|
+  Sector.create(name: s, city: City.first)
+end
+
+groups = ['Sagrado Corazón de Jesus', 'Inmaculado Corazon de Maria', 'Santisimo Sacramento', 'Maria Reina de las Familias']
+
+groups.each do |g|
+  Group.create(name: g, day: 'vie', hour: '6:00', phone: '9876543210', sector: Sector.first)
+end

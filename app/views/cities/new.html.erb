@@ -1,0 +1,11 @@
+<div class="login">
+  <h1 class="text-center bold">Ciudad Nueva</h1>
+
+  <%= simple_form_for @city, url: cities_path(@city, country_id: @country), remote: true do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :name, label: 'Nombre de la Ciudad', placeholder: 'Monterrey' %>
+    
+    <%= f.submit 'Crear', class: 'btn btn-success bold' %>
+  <% end %>
+</div>

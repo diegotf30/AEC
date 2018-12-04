@@ -3,6 +3,7 @@ class Member < ApplicationRecord
          :rememberable, :trackable, :confirmable, :lockable
   
   has_and_belongs_to_many :groups
+  has_many :attendances
 
   validates :name, length: { maximum: 50 }, allow_blank: true
   validates :phone, uniqueness: true, allow_blank: true, allow_nil: true
@@ -23,5 +24,9 @@ class Member < ApplicationRecord
 
   def inactive?
     status == 'inactive'
+  end
+
+  def was_present_last_time?
+    attendances.order(:created_at).last.presence
   end
 end

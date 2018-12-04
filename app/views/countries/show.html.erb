@@ -1,5 +1,19 @@
-<h1 class="text-center pd-tp-3 bold">
+<h1 class="text-center bold">
   <%= @country.name %>
 </h1>
+
+<div class="text-center">
+  <%= link_to "Agregar Ciudad", new_city_path(country_id: @country),
+        class: "btn btn-primary bold"
+  %>
+
+  <%= link_to "Editar Pais", edit_country_path(@country),
+        class: "btn btn-success bold"
+  %>
+
+  <%= link_to "Borrar Pais (y ciudades!)", country_path(@country), action: 'destroy',
+        class: "btn btn-danger bold"
+  %>
+</div>
 
 <%= render "application/dashboard", children: @cities %>

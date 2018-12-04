@@ -1,5 +1,14 @@
-<h1 class="text-center pd-tp-3 bold">
+<h1 class="text-center bold">
   <%= @city.name %>
 </h1>
+
+<div class="text-center">
+  <%= link_to "Editar Ciudad", edit_city_path(@city, country_id: @city.country.id),
+        class: "btn btn-success bold"
+  %>
+
+  <%= link_to "Borrar ciudad (y sectores!)", city_path(@city), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger bold"
+  %>
+</div>
 
 <%= render "application/dashboard", children: @sectors %>

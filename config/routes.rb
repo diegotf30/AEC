@@ -26,12 +26,12 @@ Rails.application.routes.draw do
     resource :verification, only: [:show]
   end
 
-  resources :members, only: [:show, :new]
+  resources :members
 
-  resources :countries, only: [:index, :show]
-  resources :cities, only: [:new, :show]
-  resources :sectors, only: [:new, :show]
-  resources :groups, only: [:new, :show]
+  resources :countries
+  resources :cities
+  resources :sectors
+  resources :groups
 
   resources :reports, only: [:index, :new]
   resources :attendances, only: [:create, :update]

@@ -1,0 +1,11 @@
+<div class="login">
+  <h1 class="text-center bold">Editar País</h1>
+
+  <%= simple_form_for @country, url: country_path(@country), method: :patch, remote: true do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :name, label: 'Nombre del País', placeholder: 'México', value: @country.name %>
+    
+    <%= f.submit 'Actualizar', class: 'btn btn-success bold' %>
+  <% end %>
+</div>

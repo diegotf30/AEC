@@ -1,11 +1,11 @@
 <div class="login">
-  <h1 class="text-center bold">AEC</h1>
+  <h1 class="text-center bold">País Nuevo</h1>
 
-  <%= simple_form_for Country.new, as: :country, url: new_country_path(resource_name), remote: true do |f| %>
-    <%= devise_error_messages! %>
+  <%= simple_form_for @country, url: countries_path(@country), remote: true do |f| %>
+    <%= f.error_notification %>
 
-    <%= f.input :name, placeholder: 'aa', input_html: { autocomplete: 'email' } %>
+    <%= f.input :name, label: 'Nombre del País', placeholder: 'México' %>
     
-      <%= f.submit 'Entrar' %>
+      <%= f.submit 'Crear', class: 'btn btn-success bold' %>
   <% end %>
 </div>

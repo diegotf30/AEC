@@ -1,0 +1,11 @@
+<div class="login">
+  <h1 class="text-center bold">Editar Ciudad</h1>
+
+  <%= simple_form_for @city, url: city_path(@city, country_id: @country.id), method: :patch, remote: true do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :name, label: 'Nombre de la Ciudad', placeholder: 'Monterrey', value: @city.name %>
+    
+    <%= f.submit 'Actualizar', class: 'btn btn-success bold' %>
+  <% end %>
+</div>

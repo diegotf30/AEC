@@ -33,14 +33,12 @@ gem 'mdb'
 # CSS Dependencies
 gem 'bootstrap', '~> 4.1.1'
 
+gem 'pundit'
+
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'byebug'
-  gem 'certified', '~> 0.1.2'
-  gem 'foreman', '~> 0.63.0'
-  gem 'pry-rails', '~> 0.3.2'
-  gem 'listen'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen'
 end
 
 group :development, :test do
@@ -48,21 +46,17 @@ group :development, :test do
   gem 'bullet'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
-  gem 'spring-commands-rspec', '1.0.4'
-end
-
-group :test do
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'sinatra'
   gem 'database_cleaner'
-  gem 'email_spec', '~> 1.6.0'
+  gem 'spring-commands-rspec', '1.0.4'
   gem 'json-schema'
   gem 'prickle'
-  gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 3.1.0'
-  gem 'sinatra'
-  gem 'timecop', '~> 0.8.0'
+  gem 'faker'
+  gem 'json_matchers'
 end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
